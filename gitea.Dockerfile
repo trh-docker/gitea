@@ -1,5 +1,5 @@
 FROM quay.io/spivegin/golangnodesj
-WORKDIR /opt/src/src/github.com/go-gitea
+WORKDIR /opt/src/src/code.gitea.io/
 ADD Makefile /opt/Makefile
 # ADD https://github.com/gogs/gogs/releases/download/v0.11.86/linux_amd64.zip /opt/
 RUN apt-get update && apt-get install -y zip libpam0g-dev 
