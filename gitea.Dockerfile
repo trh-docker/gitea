@@ -16,6 +16,7 @@ COPY --from=dev-build /opt/src/src/code.gitea.io/gitea/gitea /opt/bin/gitea
 WORKDIR /opt/gitea
 ADD entry.sh /opt/bin/
 RUN chmod +x /opt/bin/entry.sh && chmod +x /opt/bin/gitea &&\
+    ln -s /opt/bin/gitea /bin/gitea &&\
     apt update && apt install -y git &&\
     apt-get autoremove &&\
     apt-get autoclean &&\
