@@ -1,4 +1,4 @@
-FROM quay.io/spivegin/golangnodesj AS dev-build
+FROM quay.io/spivegin/golangnodesj
 WORKDIR /opt/src/src/github.com/go-gitea
 ADD Makefile /opt/Makefile
 # ADD https://github.com/gogs/gogs/releases/download/v0.11.86/linux_amd64.zip /opt/
