@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y zip libpam0g-dev
 RUN git clone https://github.com/go-gitea/gitea.git &&\
     cd gitea && cp /opt/Makefile . &&\
     npm install -g less &&\
-    make release
+    make build
 
 # FROM debian:stretch-slim
 # # adduser --disabled-login --gecos 'Gogs' git
