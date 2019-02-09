@@ -8,7 +8,7 @@ ARG TAGS="sqlite sqlite_unlock_notify"
 ENV TAGS "bindata $TAGS"
 
 #Checkout version if set
-RUN git clone https://github.com/go-gitea/gitea.git  && cd gitea &&\
+RUN git clone https://github.com/go-gitea/gitea.git &&\
     cd gitea && cp /opt/Makefile . &&\
     make clean generate build
   
