@@ -9,7 +9,6 @@ ENV TAGS "bindata $TAGS"
 
 #Checkout version if set
 RUN git clone https://github.com/go-gitea/gitea.git  && cd gitea &&\
-    if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
     cd gitea && cp /opt/Makefile . &&\
     make clean generate build
   
