@@ -14,12 +14,11 @@ RUN git clone https://github.com/go-gitea/gitea.git &&\
   
 FROM debian:stretch-slim
 RUN mkdir -p /opt/bin/ 
-COPY --from=dev-build /opt/src/src/code.gitea.io/gitea/gitea /opt/bin/gitea
+COPY --from=dev-build /opt/src/src/code.gitea.io/gitea/gitea /opt/gitea/gitea
 # COPY --from=dev-build /opt/gogs /opt/
 WORKDIR /opt/gitea
 ADD entry.sh /opt/bin/
-RUN chmod +x /opt/bin/entry.sh && chmod +x /opt/bin/gitea &&\
-    ln -s /opt/bin/gitea /bin/gitea &&\
+RUN chmod +x /opt/gitea/gitea &&\
     apt update && apt install -y git &&\
     apt-get autoremove &&\
     apt-get autoclean &&\
@@ -27,4 +26,4 @@ RUN chmod +x /opt/bin/entry.sh && chmod +x /opt/bin/gitea &&\
 ENV USER root
 ENV GITEA_CUSTOM /opt/gitea
 USER root
-CMD ["/opt/bin/entry.sh"]
+CMD ["./gitea"]
