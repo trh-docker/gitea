@@ -1,7 +1,7 @@
 FROM quay.io/spivegin/golangnodesj AS dev-build
 WORKDIR /opt/src/src/code.gitea.io/
 ADD Makefile /opt/Makefile
-ADD img /opt/
+ADD img /opt/img
 RUN apt-get update && apt-get install -y zip libpam0g-dev
 # git clone https://github.com/go-gitea/gitea.git &&\
 ARG GITEA_VERSION
