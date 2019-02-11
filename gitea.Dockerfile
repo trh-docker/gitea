@@ -1,6 +1,7 @@
 FROM quay.io/spivegin/golangnodesj AS dev-build
 WORKDIR /opt/src/src/code.gitea.io/
 ADD Makefile /opt/Makefile
+ADD logo.svg /opt/logo.svg
 RUN apt-get update && apt-get install -y zip libpam0g-dev 
 # git clone https://github.com/go-gitea/gitea.git &&\
 ARG GITEA_VERSION
@@ -9,7 +10,7 @@ ENV TAGS "bindata $TAGS"
 
 #Checkout version if set
 RUN git clone https://github.com/go-gitea/gitea.git &&\
-    cd gitea && cp /opt/Makefile . &&\
+    cd gitea && cp /opt/Makefile . && cp /opt/logo.svg assets/logo.svg &&\
     make clean generate build
   
 FROM debian:stretch-slim
