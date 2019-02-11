@@ -11,7 +11,7 @@ ENV TAGS "bindata $TAGS"
 
 #Checkout version if set
 RUN git clone https://github.com/go-gitea/gitea.git &&\
-    cd gitea && cp /opt/Makefile . && cp -r /opt/img  public/ && rm templates  && cp -r /opt/templates templates 
+    cd gitea && cp /opt/Makefile . && cp -r /opt/img  public/ && rm -rf templates  && cp -r /opt/templates templates 
 RUN cd /opt/src/src/code.gitea.io/gitea && make clean generate build
   
 FROM debian:stretch-slim
