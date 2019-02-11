@@ -2,7 +2,7 @@ FROM quay.io/spivegin/golangnodesj AS dev-build
 WORKDIR /opt/src/src/code.gitea.io/
 ADD Makefile /opt/Makefile
 ADD logo.svg /opt/logo.svg
-RUN apt-get update && apt-get install -y zip libpam0g-dev inkscape
+RUN apt-get update && apt-get install -y zip libpam0g-dev inkscape zopfli imagemagick
 # git clone https://github.com/go-gitea/gitea.git &&\
 ARG GITEA_VERSION
 ARG TAGS="sqlite sqlite_unlock_notify"
