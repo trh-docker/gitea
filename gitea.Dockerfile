@@ -1,8 +1,8 @@
 FROM quay.io/spivegin/golangnodesj AS dev-build
 WORKDIR /opt/src/src/code.gitea.io/
 ADD Makefile /opt/Makefile
-ADD logo_inkscape.svg /opt/logo.svg
-RUN apt-get update && apt-get install -y zip libpam0g-dev inkscape zopfli imagemagick
+ADD img /opt/
+RUN apt-get update && apt-get install -y zip libpam0g-dev inkscape 
 # git clone https://github.com/go-gitea/gitea.git &&\
 ARG GITEA_VERSION
 ARG TAGS="sqlite sqlite_unlock_notify"
@@ -10,7 +10,7 @@ ENV TAGS "bindata $TAGS"
 
 #Checkout version if set
 RUN git clone https://github.com/go-gitea/gitea.git &&\
-    cd gitea && cp /opt/Makefile . && cp /opt/logo.svg assets/logo.svg &&\
+    cd gitea && cp /opt/Makefile . && cp -r /opt/img  public/ &&\
     make generate-images
 RUN cd /opt/src/src/code.gitea.io/gitea && make clean generate build
   
